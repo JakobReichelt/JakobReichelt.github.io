@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="de" style="margin: 0; padding: 0;">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gedanken — Jakob Reichelt</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      html {
+        background: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        height: 100%;
+      }
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #e8e8e6;
+        background-image: none;
+        background-size: 100% auto;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100%;
+        transition: none;
+        overflow: hidden;
+      }
+      .site-nav {
+        position: fixed;
+        z-index: 100;
+        transition: color 0.6s ease;
+      }
+      .site-nav, .site-nav a {
+        color: inherit;
+      }
+      .site-nav.scrolled, .site-nav.scrolled a {
+        color: #666666;
+      }
+      #gedanken-viewer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      #gedanken-viewer::-webkit-scrollbar {
+        display: none;
+      }
+      #gedanken-viewer {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .gedanken-group {
+        width: 100%;
+        height: 100vh;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        flex-shrink: 0;
+      }
+      .gedanken-group::-webkit-scrollbar {
+        display: none;
+      }
+      .gedanken-group {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .gedanken-section {
+        min-width: 60vw;
+        width: 60vw;
+        height: 100vh;
+        scroll-snap-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        margin-right: 3vw;
+        transition: opacity 0.5s ease;
+        opacity: 0.3;
+      }
+      .gedanken-section.active {
+        opacity: 1;
+      }
+      .gedanken-section:first-child {
+        margin-left: 25vw;
+      }
+      .gedanken-section:last-child {
+        margin-right: 25vw;
+      }
+      .gedanken-section div::-webkit-scrollbar {
+        display: none;
+      }
+      .gedanken-section div {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .gedanken-peek-zone {
+        position: fixed;
+        top: 0;
+        width: 20vw;
+        height: 100vh;
+        z-index: 50;
+        cursor: pointer;
+        background: transparent;
+        transition: opacity 0.3s ease;
+      }
+      .gedanken-peek-zone.left {
+        left: 0;
+      }
+      .gedanken-peek-zone.right {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-nav">
+      <div class="brand"><a href="index.html">Jakob Reichelt</a></div>
+      <nav aria-label="Main" class="brand-nav">
+        <ul class="nav-list">
+          <li><a href="about.html">Über</a></li>
+          <li><a href="work.html">Arbeit</a></li>
+          <li><a href="gedanken.html" aria-current="page">Gedanken</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <div id="gedanken-viewer">
+        <!-- Gedanken sections will be loaded dynamically -->
+      </div>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+  </html>
